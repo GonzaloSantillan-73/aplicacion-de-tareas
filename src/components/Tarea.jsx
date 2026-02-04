@@ -1,17 +1,21 @@
 import "../styles/Tarea.css"
 import { TiDeleteOutline } from "react-icons/ti";
 
-function Tarea ({id,texto,completado,completar}){
+function Tarea ({id,texto,completado,completar,eliminar}){
   return(
     <>
       <div
-        className={completado?"contenedor-tarea completado":"contenedor-tarea"}
-        onClick={()=>{completar(id)}}  >
+        className={completado?"contenedor-tarea completado":"contenedor-tarea"}>
         <div
-          className="contenedor-texto">
+          className="contenedor-texto"
+          onClick={()=>{completar(id)}} >
           {texto}
         </div>
-        <div className="contenedor-eliminar"><TiDeleteOutline /></div>
+        <div
+          className="contenedor-eliminar"
+          onClick={()=>{eliminar(id)}}>
+          <TiDeleteOutline />
+        </div>
       </div>
     </>
   )

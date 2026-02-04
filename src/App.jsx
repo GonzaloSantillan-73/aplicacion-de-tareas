@@ -5,17 +5,17 @@ function App() {
 
   const listaDeTareas=[
     {
-      texto:"banana",
+      texto:"BANANA",
       completado:false,
       id:1
     },
         {
-      texto:"manzana",
+      texto:"MANZANA",
       completado:false,
       id:2
     },
         {
-      texto:"anana",
+      texto:"ANANA",
       completado:true,
       id:3
     }
@@ -32,6 +32,16 @@ function App() {
     setTareas([...tareas])
   }
 
+  const eliminar = (id) =>{
+    const tareasActualizadas = tareas.filter((tarea)=>{
+      if(tarea.id !== id){
+        return tarea
+      }
+
+    })
+    setTareas(tareasActualizadas)
+  }
+
   return (
     <>
       {
@@ -42,6 +52,7 @@ function App() {
             texto={tarea.texto}
             completado={tarea.completado}
             completar={completar}
+            eliminar={eliminar}
           />
         )
       }
