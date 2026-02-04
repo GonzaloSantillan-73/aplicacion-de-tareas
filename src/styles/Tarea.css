@@ -1,5 +1,6 @@
 .contenedor-tarea{
-  width: 500px;
+  width: 300px;
+  max-width: 500px;
   height: 60px;
   font-size: 20px;
   background-color: rgb(13, 13, 65);
