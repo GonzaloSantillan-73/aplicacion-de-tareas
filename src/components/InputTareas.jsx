@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../styles/InputTareas.css";
+import { IoAddOutline } from "react-icons/io5";
 
 function InputTareas({ agregarTarea }) {
   const [input, setInput] = useState("");
@@ -32,7 +33,7 @@ function InputTareas({ agregarTarea }) {
           autoComplete="off"
         />
         <button className="agregar-tarea" type="submit">
-          Agregar
+          <IoAddOutline size={40}/>
         </button>
       </form>
       <p className="mensaje-error">{error<3?`Ingresa al menos 3 caracteres (llevas ${error}).`:``}</p>
