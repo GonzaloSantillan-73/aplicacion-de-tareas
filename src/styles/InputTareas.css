@@ -6,12 +6,12 @@
   font-size: 25px;
 }
 
-.formulario{
-  margin-bottom: 30px;
-}
-
 .input-tarea:focus{
   outline: none;
+}
+
+.mensaje-error{
+  margin: 0;
 }
 
 .agregar-tarea{
