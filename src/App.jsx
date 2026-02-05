@@ -1,6 +1,6 @@
 import React,{useState} from "react"
 import ListaTareas from "./components/ListaTareas"
-import "./app.css"
+import "./App.css"
 
 function App() {
   return (
