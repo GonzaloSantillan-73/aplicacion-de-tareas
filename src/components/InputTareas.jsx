@@ -1,4 +1,5 @@
 import React,{useState} from "react";
+import "../styles/InputTareas.css"
 
 function InputTareas({agregarTarea}){
 
@@ -20,9 +21,9 @@ function InputTareas({agregarTarea}){
 
   return(
     <>
-      <form onSubmit={manejarEnvio}>
-        <input type="text" placeholder="Escriba la tarea..." name="tarea" onChange={manejarCambio} />
-        <button type="submit">Agregar</button>
+      <form className="formulario" onSubmit={manejarEnvio}>
+        <input className="input-tarea" type="text" placeholder="Escriba la tarea..." name="tarea" onChange={manejarCambio} />
+        <button className="agregar-tarea" type="submit">Agregar</button>
       </form>
     </>
   )

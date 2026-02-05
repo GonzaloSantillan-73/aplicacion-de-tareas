@@ -10,11 +10,11 @@ html {
 
 .contenedor-todo{
   background-color: white;
-  width: 400px;
-  max-width: 400px;
+  width: 600px;
+  max-width: 600px;
   min-width: 300px;
   padding: 10px;
   border-radius: 10px;
-  margin: 0 auto;
+  margin: 30px auto;
 }
 
