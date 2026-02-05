@@ -1,5 +1,6 @@
 import React,{useState} from "react"
 import Tarea from "./Tarea"
+import InputTareas from "./InputTareas"
 
 function listaTareas() {
   const listaDeTareas = [
@@ -40,8 +41,13 @@ function listaTareas() {
     setTareas(tareasActualizadas);
   };
 
+  const agregarTarea = (tareaNueva) => {
+    setTareas([tareaNueva,...tareas])
+  }
+
   return (
     <div className="">
+      <InputTareas agregarTarea={agregarTarea}/>
       {tareas.map((tarea) => (
         <Tarea
           key={tarea.id}
