@@ -1,3 +1,51 @@
+/* colores del modo claro */
+:root {
+  --fondo: rgb(225, 228, 235);
+  --contenedor: rgb(255, 255, 255);
+  --texto: rgb(30, 30, 40);
+  --texto-suave: rgb(110, 112, 125);
+  --borde: rgb(215, 218, 225);
+  --principal: rgb(13, 13, 65);
+  --boton: rgb(1, 26, 1);
+  --boton-texto: rgb(255, 255, 255);
+  --input-fondo: rgb(255, 255, 255);
+  --tarjeta: rgb(13, 13, 65);
+  --tarjeta-texto: rgb(255, 255, 255);
+  --completada: rgb(245, 200, 120);
+  --completada-texto: rgb(90, 50, 0);
+  --etiqueta: rgb(255, 255, 255);
+  --etiqueta-texto: rgb(13, 13, 65);
+  --ver-mas-hover: rgb(210, 210, 230);
+  --papelera-tarjeta: rgb(85, 85, 90);
+  --peligro: rgb(170, 20, 20);
+  --fondo-modal: rgba(0, 0, 0, 0.6);
+}
+
+/* colores del modo oscuro, se activa con la clase en el body */
+body.oscuro {
+  --fondo: rgb(14, 15, 20);
+  --contenedor: rgb(26, 27, 34);
+  --texto: rgb(225, 226, 232);
+  --texto-suave: rgb(150, 152, 165);
+  --borde: rgb(55, 57, 68);
+  --principal: rgb(165, 175, 240);
+  --boton: rgb(45, 120, 70);
+  --boton-texto: rgb(255, 255, 255);
+  --input-fondo: rgb(34, 35, 44);
+  --tarjeta: rgb(38, 40, 60);
+  --tarjeta-texto: rgb(230, 230, 240);
+  --completada: rgb(65, 50, 25);
+  --completada-texto: rgb(235, 185, 100);
+  --etiqueta: rgb(70, 75, 115);
+  --etiqueta-texto: rgb(235, 235, 245);
+  --ver-mas-hover: rgb(90, 95, 140);
+  --papelera-tarjeta: rgb(45, 45, 50);
+  --peligro: rgb(215, 75, 75);
+  --fondo-modal: rgba(0, 0, 0, 0.75);
+  /* para que los select y las barras de desplazamiento tambien sean oscuras */
+  color-scheme: dark;
+}
+
 html {
   box-sizing: border-box;
 }
@@ -10,9 +58,18 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: rgb(5, 5, 37);
+  background-color: var(--fondo);
+  color: var(--texto);
 }
 
 #root {
   min-height: 100vh;
+}
+
+/* los inputs no heredan el color solos */
+input,
+select,
+textarea {
+  background-color: var(--input-fondo);
+  color: var(--texto);
 }

@@ -1,6 +1,6 @@
 .tarjeta{
-  background-color: rgb(13, 13, 65);
-  color: white;
+  background-color: var(--tarjeta);
+  color: var(--tarjeta-texto);
   padding: 15px;
   border-radius: 10px;
   display: flex;
@@ -9,8 +9,8 @@
 }
 
 .completado{
-  background-color: orange;
-  color: red;
+  background-color: var(--completada);
+  color: var(--completada-texto);
 }
 
 .completado .contenedor-texto{
@@ -20,8 +20,8 @@
 .etiqueta-categoria{
   width: fit-content;
   font-size: 12px;
-  background-color: white;
-  color: rgb(13, 13, 65);
+  background-color: var(--etiqueta);
+  color: var(--etiqueta-texto);
   padding: 2px 8px;
   border-radius: 10px;
 }
@@ -47,8 +47,8 @@
 .boton-ver-mas{
   margin-top: 10px;
   padding: 4px 12px;
-  background-color: white;
-  color: rgb(13, 13, 65);
+  background-color: var(--etiqueta);
+  color: var(--etiqueta-texto);
   border: none;
   border-radius: 5px;
   font-size: 13px;
@@ -57,7 +57,7 @@
 }
 
 .boton-ver-mas:hover{
-  background-color: rgb(210, 210, 230);
+  background-color: var(--ver-mas-hover);
 }
 
 .pie-tarjeta{

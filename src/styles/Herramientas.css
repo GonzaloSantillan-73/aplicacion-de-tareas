@@ -4,14 +4,16 @@
   display: flex;
   align-items: center;
   gap: 5px;
-  border: 2px solid rgb(13, 13, 65);
+  border: 2px solid var(--principal);
   border-radius: 20px;
   padding: 6px 12px;
+  background-color: var(--input-fondo);
 }
 
 .buscador input{
   flex: 1;
   border: none;
+  background-color: transparent;
   font-size: 16px;
 }
 
@@ -28,7 +30,7 @@
 .ordenar select{
   padding: 6px;
   font-size: 14px;
-  border: 2px solid rgb(13, 13, 65);
+  border: 2px solid var(--principal);
   border-radius: 5px;
 }
 

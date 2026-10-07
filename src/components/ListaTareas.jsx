@@ -6,7 +6,7 @@ import Papelera from "./Papelera"
 import ModalTarea from "./ModalTarea"
 import ModalCategoria from "./ModalCategoria"
 import { FaRegTrashAlt } from "react-icons/fa";
-import { IoAddOutline } from "react-icons/io5";
+import { IoAddOutline, IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
 
 const TREINTA_DIAS = 30 * 24 * 60 * 60 * 1000;
 
@@ -19,7 +19,7 @@ const leerLocal = (clave, valorPorDefecto) => {
   return valorPorDefecto;
 };
 
-function ListaTareas() {
+function ListaTareas({ modoOscuro, cambiarModo }) {
   const [tareas, setTareas] = useState(() => leerLocal("tareas", []));
   const [categorias, setCategorias] = useState(() =>
     leerLocal("categorias", ["General"])
@@ -194,16 +194,25 @@ function ListaTareas() {
       <header className="encabezado">
         <h1>Mis tareas</h1>
         <Buscador busqueda={busqueda} setBusqueda={setBusqueda} />
-        <button
-          className="boton-icono-papelera"
-          title="Papelera"
-          onClick={() => setVerPapelera(true)}
-        >
-          <FaRegTrashAlt size={22} />
-          {papelera.length > 0 && (
-            <span className="contador">{papelera.length}</span>
-          )}
-        </button>
+        <div className="iconos-encabezado">
+          <button
+            className="boton-icono"
+            title={modoOscuro ? "Modo claro" : "Modo oscuro"}
+            onClick={cambiarModo}
+          >
+            {modoOscuro ? <IoSunnyOutline size={24} /> : <IoMoonOutline size={24} />}
+          </button>
+          <button
+            className="boton-icono"
+            title="Papelera"
+            onClick={() => setVerPapelera(true)}
+          >
+            <FaRegTrashAlt size={22} />
+            {papelera.length > 0 && (
+              <span className="contador">{papelera.length}</span>
+            )}
+          </button>
+        </div>
       </header>
 
       <div className="barra-acciones">
