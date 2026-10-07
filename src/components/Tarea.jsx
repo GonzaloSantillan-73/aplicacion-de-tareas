@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react"
 import "../styles/Tarea.css"
-import { TiDeleteOutline } from "react-icons/ti";
-import { FiEdit2 } from "react-icons/fi";
+import { FiEdit2, FiTrash2 } from "react-icons/fi";
 import { formatearFecha } from "../utils/fechas";
 import ModalVerTarea from "./ModalVerTarea";
 
@@ -46,7 +45,7 @@ function Tarea ({tarea,completar,eliminar,abrirEditar}){
         </div>
         <div className="contenedor-iconos">
           <FiEdit2 className="icono" title="Editar" onClick={()=>{abrirEditar(tarea)}} />
-          <TiDeleteOutline className="icono" title="Eliminar" onClick={()=>{eliminar(tarea.id)}} />
+          <FiTrash2 className="icono" title="Eliminar" onClick={()=>{eliminar(tarea.id)}} />
         </div>
       </div>
 
