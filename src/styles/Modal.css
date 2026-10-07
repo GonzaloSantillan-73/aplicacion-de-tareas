@@ -1,0 +1,84 @@
+/* fondo oscuro que tapa toda la pantalla */
+.fondo-modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.modal{
+  background-color: white;
+  width: 90%;
+  max-width: 450px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.modal h2{
+  margin-top: 0;
+  color: rgb(13, 13, 65);
+}
+
+.modal form{
+  display: flex;
+  flex-direction: column;
+}
+
+.modal label{
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.modal input,
+.modal select{
+  padding: 8px;
+  font-size: 18px;
+  border: 2px solid rgb(1, 26, 1);
+}
+
+.modal input:focus{
+  outline: none;
+}
+
+.mensaje-error{
+  font-size: 13px;
+  color: rgb(170, 20, 20);
+  margin: 5px 0 15px 0;
+  min-height: 16px;
+}
+
+.categorias-existentes{
+  font-size: 13px;
+  color: gray;
+}
+
+.botones-modal{
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.botones-modal button{
+  padding: 8px 16px;
+  font-size: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.boton-cancelar{
+  background-color: white;
+  border: 2px solid gray;
+}
+
+.boton-guardar{
+  background-color: rgb(1, 26, 1);
+  border: 2px solid rgb(1, 26, 1);
+  color: white;
+}

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react"
 import Tarea from "./Tarea"
-import InputTareas from "./InputTareas"
 import Buscador from "./Buscador"
 import Ordenar from "./Ordenar"
-import Categorias from "./Categorias"
 import Papelera from "./Papelera"
+import ModalTarea from "./ModalTarea"
+import ModalCategoria from "./ModalCategoria"
+import { FaRegTrashAlt } from "react-icons/fa";
+import { IoAddOutline } from "react-icons/io5";
 
 const TREINTA_DIAS = 30 * 24 * 60 * 60 * 1000;
 
@@ -36,6 +38,11 @@ function ListaTareas() {
   const [direccion, setDireccion] = useState("desc");
   const [verPapelera, setVerPapelera] = useState(false);
 
+  // para los modales
+  const [mostrarModalTarea, setMostrarModalTarea] = useState(false);
+  const [tareaEditando, setTareaEditando] = useState(null);
+  const [mostrarModalCategoria, setMostrarModalCategoria] = useState(false);
+
   useEffect(() => {
     localStorage.setItem("tareas", JSON.stringify(tareas));
   }, [tareas]);
@@ -48,29 +55,49 @@ function ListaTareas() {
     localStorage.setItem("papelera", JSON.stringify(papelera));
   }, [papelera]);
 
-  const agregarTarea = (tareaNueva) => {
-    setTareas([tareaNueva, ...tareas]);
+  const abrirNueva = () => {
+    setTareaEditando(null);
+    setMostrarModalTarea(true);
+  };
+
+  const abrirEditar = (tarea) => {
+    setTareaEditando(tarea);
+    setMostrarModalTarea(true);
+  };
+
+  const cerrarModalTarea = () => {
+    setMostrarModalTarea(false);
+    setTareaEditando(null);
+  };
+
+  // si hay una tarea editandose la actualizo, si no creo una nueva
+  const guardarTarea = (texto, categoria) => {
+    const ahora = Date.now();
+    if (tareaEditando) {
+      const tareasActualizadas = tareas.map((tarea) => {
+        if (tarea.id === tareaEditando.id) {
+          return { ...tarea, texto: texto, categoria: categoria, actualizada: ahora };
+        }
+        return tarea;
+      });
+      setTareas(tareasActualizadas);
+    } else {
+      const tareaNueva = {
+        texto: texto,
+        id: crypto.randomUUID(),
+        completado: false,
+        categoria: categoria,
+        creada: ahora,
+        actualizada: ahora,
+      };
+      setTareas([tareaNueva, ...tareas]);
+    }
   };
 
   const completar = (id) => {
     const tareasActualizadas = tareas.map((tarea) => {
       if (tarea.id === id) {
         return { ...tarea, completado: !tarea.completado, actualizada: Date.now() };
-      }
-      return tarea;
-    });
-    setTareas(tareasActualizadas);
-  };
-
-  const editar = (id, textoNuevo, categoriaNueva) => {
-    const tareasActualizadas = tareas.map((tarea) => {
-      if (tarea.id === id) {
-        return {
-          ...tarea,
-          texto: textoNuevo,
-          categoria: categoriaNueva,
-          actualizada: Date.now(),
-        };
       }
       return tarea;
     });
@@ -102,10 +129,6 @@ function ListaTareas() {
   };
 
   const crearCategoria = (nombre) => {
-    if (categorias.includes(nombre)) {
-      alert("Esa categoria ya existe");
-      return;
-    }
     setCategorias([...categorias, nombre]);
   };
 
@@ -146,37 +169,76 @@ function ListaTareas() {
 
   return (
     <div>
-      <InputTareas agregarTarea={agregarTarea} categorias={categorias} />
-      <Categorias crearCategoria={crearCategoria} />
-      <Buscador busqueda={busqueda} setBusqueda={setBusqueda} />
-      <Ordenar
-        categorias={categorias}
-        filtroCategoria={filtroCategoria}
-        setFiltroCategoria={setFiltroCategoria}
-        criterio={criterio}
-        setCriterio={setCriterio}
-        direccion={direccion}
-        setDireccion={setDireccion}
-      />
+      <header className="encabezado">
+        <h1>Mis tareas</h1>
+        <Buscador busqueda={busqueda} setBusqueda={setBusqueda} />
+        <button
+          className="boton-icono-papelera"
+          title="Papelera"
+          onClick={() => setVerPapelera(true)}
+        >
+          <FaRegTrashAlt size={22} />
+          {papelera.length > 0 && (
+            <span className="contador">{papelera.length}</span>
+          )}
+        </button>
+      </header>
 
-      <button className="boton-papelera" onClick={() => setVerPapelera(true)}>
-        Ver papelera ({papelera.length})
-      </button>
+      <div className="barra-acciones">
+        <div className="botones-crear">
+          <button className="boton-principal" onClick={abrirNueva}>
+            <IoAddOutline size={20} /> Agregar tarea
+          </button>
+          <button
+            className="boton-secundario"
+            onClick={() => setMostrarModalCategoria(true)}
+          >
+            <IoAddOutline size={20} /> Categoria
+          </button>
+        </div>
+        <Ordenar
+          categorias={categorias}
+          filtroCategoria={filtroCategoria}
+          setFiltroCategoria={setFiltroCategoria}
+          criterio={criterio}
+          setCriterio={setCriterio}
+          direccion={direccion}
+          setDireccion={setDireccion}
+        />
+      </div>
 
       {tareasMostradas.length === 0 && (
         <p className="sin-tareas">No hay tareas para mostrar</p>
       )}
 
-      {tareasMostradas.map((tarea) => (
-        <Tarea
-          key={tarea.id}
-          tarea={tarea}
+      <div className="grilla-tareas">
+        {tareasMostradas.map((tarea) => (
+          <Tarea
+            key={tarea.id}
+            tarea={tarea}
+            completar={completar}
+            eliminar={eliminar}
+            abrirEditar={abrirEditar}
+          />
+        ))}
+      </div>
+
+      {mostrarModalTarea && (
+        <ModalTarea
+          tareaEditando={tareaEditando}
           categorias={categorias}
-          completar={completar}
-          eliminar={eliminar}
-          editar={editar}
+          guardarTarea={guardarTarea}
+          cerrar={cerrarModalTarea}
         />
-      ))}
+      )}
+
+      {mostrarModalCategoria && (
+        <ModalCategoria
+          categorias={categorias}
+          crearCategoria={crearCategoria}
+          cerrar={() => setMostrarModalCategoria(false)}
+        />
+      )}
     </div>
   );
 }

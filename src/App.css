@@ -11,24 +11,150 @@ html {
 .contenedor-todo{
   background-color: white;
   width: 95%;
-  max-width: 600px;
-  min-width: 300px;
-  padding: 10px;
+  max-width: 1600px;
+  padding: 20px;
   border-radius: 10px;
-  margin: 30px auto;
+  margin: 20px auto;
 }
 
+/* barra de arriba: titulo, buscador y papelera */
+.encabezado{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgb(230, 230, 230);
+}
 
-.boton-papelera{
-  padding: 5px 10px;
+.encabezado h1{
+  margin: 0;
+  font-size: 28px;
+  color: rgb(13, 13, 65);
+}
+
+.boton-icono-papelera{
+  position: relative;
+  background: none;
   border: none;
-  border-radius: 5px;
-  background-color: rgb(80, 80, 80);
-  color: white;
+  color: rgb(13, 13, 65);
   cursor: pointer;
+  padding: 8px;
+}
+
+.contador{
+  position: absolute;
+  top: 0;
+  right: -4px;
+  background-color: rgb(170, 20, 20);
+  color: white;
+  font-size: 11px;
+  border-radius: 10px;
+  padding: 1px 6px;
+}
+
+/* botones de crear y los select de ordenar */
+.barra-acciones{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 15px 0 20px 0;
+}
+
+.botones-crear{
+  display: flex;
+  gap: 10px;
+}
+
+.boton-principal,
+.boton-secundario{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 14px;
+  font-size: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.boton-principal{
+  background-color: rgb(1, 26, 1);
+  border: 2px solid rgb(1, 26, 1);
+  color: white;
+}
+
+.boton-secundario{
+  background-color: white;
+  border: 2px solid rgb(1, 26, 1);
+  color: rgb(1, 26, 1);
 }
 
 .sin-tareas{
   text-align: center;
   color: gray;
+  margin: 40px 0;
+}
+
+/* grilla de tarjetas: 1 columna en celular */
+.grilla-tareas{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+/* tablet */
+@media (min-width: 600px){
+  .grilla-tareas{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* pc (720p) */
+@media (min-width: 1024px){
+  .grilla-tareas{
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* pc grande (1080p) */
+@media (min-width: 1600px){
+  .grilla-tareas{
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* en celular el buscador baja abajo del titulo */
+@media (max-width: 599px){
+  .contenedor-todo{
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+    padding: 15px;
+  }
+
+  .encabezado{
+    flex-wrap: wrap;
+  }
+
+  .encabezado h1{
+    font-size: 24px;
+  }
+
+  .encabezado .buscador{
+    order: 3;
+    width: 100%;
+  }
+
+  .barra-acciones,
+  .botones-crear{
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .boton-principal,
+  .boton-secundario{
+    justify-content: center;
+  }
 }

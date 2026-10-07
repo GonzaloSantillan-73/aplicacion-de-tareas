@@ -5,7 +5,7 @@ import { IoSearchOutline } from "react-icons/io5";
 function Buscador({ busqueda, setBusqueda }) {
   return (
     <div className="buscador">
-      <IoSearchOutline size={22} />
+      <IoSearchOutline size={20} />
       <input
         type="text"
         placeholder="Buscar tarea..."
