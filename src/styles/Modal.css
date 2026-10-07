@@ -15,8 +15,8 @@
 .modal{
   background-color: white;
   width: 90%;
-  max-width: 450px;
-  padding: 20px;
+  max-width: 750px;
+  padding: 25px 30px;
   border-radius: 10px;
 }
 
@@ -42,7 +42,8 @@
   border: 2px solid rgb(1, 26, 1);
 }
 
-.modal input:focus{
+.modal input:focus,
+.modal textarea:focus{
   outline: none;
 }
 
@@ -53,10 +54,6 @@
   min-height: 16px;
 }
 
-.categorias-existentes{
-  font-size: 13px;
-  color: gray;
-}
 
 .botones-modal{
   display: flex;
@@ -81,4 +78,55 @@
   background-color: rgb(1, 26, 1);
   border: 2px solid rgb(1, 26, 1);
   color: white;
+}
+
+/* el textarea no se agranda, si te pasas aparece la barra para bajar */
+.textarea-tarea{
+  width: 100%;
+  height: 200px;
+  padding: 10px;
+  font-size: 18px;
+  font-family: inherit;
+  border: 2px solid rgb(1, 26, 1);
+  resize: none;
+  overflow-y: auto;
+}
+
+.fila-categoria{
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.fila-categoria input{
+  flex: 1;
+}
+
+.fila-categoria button{
+  padding: 8px 16px;
+  font-size: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.lista-categorias{
+  list-style: none;
+  padding: 0;
+  margin: 5px 0 0 0;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.lista-categorias li{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 10px;
+  border-bottom: 1px solid rgb(230, 230, 230);
+  font-size: 17px;
+}
+
+.lista-categorias .icono{
+  font-size: 22px;
+  color: rgb(170, 20, 20);
 }

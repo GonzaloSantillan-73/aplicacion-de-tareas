@@ -29,12 +29,12 @@ function ModalTarea({ tareaEditando, categorias, guardarTarea, cerrar }) {
         <h2>{tareaEditando ? "Editar tarea" : "Nueva tarea"}</h2>
         <form onSubmit={manejarEnvio}>
           <label>Tarea</label>
-          <input
-            type="text"
+          <textarea
+            className="textarea-tarea"
             placeholder="Escriba la tarea..."
+            rows={8}
             value={input}
             onChange={(e) => { manejarCambio(e) }}
-            autoComplete="off"
             autoFocus
           />
           <p className="mensaje-error">

@@ -32,6 +32,7 @@
   margin: 10px 0;
   cursor: pointer;
   overflow-wrap: anywhere;
+  white-space: pre-wrap;
 }
 
 .pie-tarjeta{

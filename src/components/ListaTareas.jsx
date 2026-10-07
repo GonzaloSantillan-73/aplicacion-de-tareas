@@ -114,6 +114,10 @@ function ListaTareas() {
   const restaurar = (id) => {
     const tareaRestaurada = { ...papelera.find((tarea) => tarea.id === id) };
     delete tareaRestaurada.fechaEliminada;
+    // por si mientras estaba en la papelera borraron su categoria
+    if (!categorias.includes(tareaRestaurada.categoria)) {
+      tareaRestaurada.categoria = "General";
+    }
     setPapelera(papelera.filter((tarea) => tarea.id !== id));
     setTareas([tareaRestaurada, ...tareas]);
   };
@@ -130,6 +134,24 @@ function ListaTareas() {
 
   const crearCategoria = (nombre) => {
     setCategorias([...categorias, nombre]);
+  };
+
+  // las tareas que tenian esa categoria pasan a General
+  const eliminarCategoria = (nombre) => {
+    if (!window.confirm(`¿Eliminar la categoria "${nombre}"? Sus tareas pasan a General.`)) {
+      return;
+    }
+    setCategorias(categorias.filter((cat) => cat !== nombre));
+    const tareasActualizadas = tareas.map((tarea) => {
+      if (tarea.categoria === nombre) {
+        return { ...tarea, categoria: "General" };
+      }
+      return tarea;
+    });
+    setTareas(tareasActualizadas);
+    if (filtroCategoria === nombre) {
+      setFiltroCategoria("Todas");
+    }
   };
 
   // primero filtro por busqueda y categoria, despues ordeno
@@ -193,7 +215,7 @@ function ListaTareas() {
             className="boton-secundario"
             onClick={() => setMostrarModalCategoria(true)}
           >
-            <IoAddOutline size={20} /> Categoria
+            <IoAddOutline size={20} /> Categorias
           </button>
         </div>
         <Ordenar
@@ -236,6 +258,7 @@ function ListaTareas() {
         <ModalCategoria
           categorias={categorias}
           crearCategoria={crearCategoria}
+          eliminarCategoria={eliminarCategoria}
           cerrar={() => setMostrarModalCategoria(false)}
         />
       )}
