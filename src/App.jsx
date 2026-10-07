@@ -3,9 +3,14 @@ import ListaTareas from "./components/ListaTareas"
 import "./App.css"
 
 function App() {
-  const [modoOscuro, setModoOscuro] = useState(
-    () => localStorage.getItem("modoOscuro") === "true"
-  );
+  // si nunca se eligio un modo arranca en oscuro
+  const [modoOscuro, setModoOscuro] = useState(() => {
+    const guardado = localStorage.getItem("modoOscuro");
+    if (guardado === null) {
+      return true;
+    }
+    return guardado === "true";
+  });
 
   // le pongo la clase al body asi cambia el fondo de toda la pagina
   useEffect(() => {
