@@ -62,10 +62,6 @@ body {
   color: var(--texto);
 }
 
-#root {
-  min-height: 100vh;
-}
-
 /* los inputs no heredan el color solos */
 input,
 select,

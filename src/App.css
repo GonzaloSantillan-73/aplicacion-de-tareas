@@ -3,10 +3,6 @@ html {
   font-size: 16px;
 }
 
-#root {
-  min-height: 100vh;
-}
-
 .contenedor-todo{
   background-color: var(--contenedor);
   width: 95%;
