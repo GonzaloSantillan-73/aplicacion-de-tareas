@@ -5,7 +5,7 @@
   font-size: 25px;
   background-color: rgb(13, 13, 65);
   color: white;
-  padding: 0 15px;
+  padding: 10px 15px;
   margin: 10px auto;
   border-radius: 10px;
   display: flex;
@@ -16,20 +16,66 @@
 .completado{
   background-color: orange;
   color: red;
+}
+
+.completado .contenedor-texto{
   text-decoration: line-through;
 }
 
+.contenedor-info{
+  width: 85%;
+}
+
 .contenedor-texto{
-  width: 90%;
-  height: 100%;
+  margin: 0 0 5px 0;
   cursor: pointer;
-  display: flex;
   overflow-wrap: anywhere
 }
 
-.contenedor-eliminar{
-  height: 10%;
+.etiqueta-categoria{
+  display: inline-block;
+  font-size: 13px;
+  background-color: white;
+  color: rgb(13, 13, 65);
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-bottom: 5px;
+}
+
+.fechas{
+  font-size: 12px;
+  margin: 2px 0;
+  opacity: 0.8;
+}
+
+.contenedor-iconos{
   display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 10px;
+}
+
+.icono{
   cursor: pointer;
+}
+
+.editando{
+  background-color: rgb(1, 26, 1);
+}
+
+.contenedor-edicion{
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.input-editar{
+  font-size: 20px;
+  padding: 5px;
+}
+
+.select-editar{
+  width: fit-content;
+  padding: 3px;
 }

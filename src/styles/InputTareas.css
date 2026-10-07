@@ -28,3 +28,10 @@
   font-size: 25px;
   cursor: pointer;
 }
+
+.select-categoria{
+  margin-top: 5px;
+  padding: 5px;
+  font-size: 16px;
+  border: 2px solid rgb(1, 26, 1);
+}

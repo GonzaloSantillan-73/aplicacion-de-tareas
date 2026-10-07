@@ -1,0 +1,46 @@
+.papelera-cabecera{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.papelera-cabecera button{
+  padding: 5px 10px;
+  border: none;
+  background-color: rgb(13, 13, 65);
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.papelera-cabecera .boton-vaciar{
+  background-color: rgb(170, 20, 20);
+}
+
+.papelera-cabecera button:disabled{
+  opacity: 0.5;
+  cursor: default;
+}
+
+.aviso{
+  font-size: 13px;
+  color: gray;
+  text-align: center;
+}
+
+.tarea-papelera{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(80, 80, 80);
+  color: white;
+  padding: 10px 15px;
+  margin: 10px 0;
+  border-radius: 10px;
+  font-size: 22px;
+}
+
+.texto-papelera{
+  margin: 0 0 5px 0;
+  overflow-wrap: anywhere;
+}

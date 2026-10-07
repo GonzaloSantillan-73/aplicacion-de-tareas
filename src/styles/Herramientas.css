@@ -1,0 +1,52 @@
+.form-categoria{
+  display: flex;
+  margin: 10px 0;
+}
+
+.form-categoria input{
+  flex: 1;
+  padding: 5px;
+  font-size: 16px;
+  border: 2px solid rgb(1, 26, 1);
+}
+
+.form-categoria button{
+  padding: 5px 10px;
+  border: 2px solid rgb(1, 26, 1);
+  background-color: rgb(1, 26, 1);
+  color: white;
+  cursor: pointer;
+}
+
+.buscador{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 2px solid rgb(13, 13, 65);
+  padding: 5px;
+  margin: 10px 0;
+}
+
+.buscador input{
+  flex: 1;
+  border: none;
+  font-size: 16px;
+}
+
+.buscador input:focus{
+  outline: none;
+}
+
+.ordenar{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.ordenar select{
+  margin-left: 5px;
+  padding: 3px;
+}
